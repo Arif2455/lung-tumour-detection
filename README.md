@@ -41,3 +41,46 @@ A **Convolutional Neural Network (CNN)** built with **TensorFlow/Keras** powers 
    ```bash
    git clone https://github.com/YourUsername/lung-tumour-detection.git
    cd lung-tumour-detection
+2.Create and activate virtual environment:
+     conda create -n lung python=3.9 -y
+     conda activate lung
+3.Install dependencies:
+     pip install -r requirements.txt
+4.Run the application:
+     streamlit run app.py
+
+##📊 MODEL DETAILS
+
+Architecture: Custom CNN
+
+Input Shape: 224 × 224 × 3
+
+Task: Binary classification (Normal vs Tumour)
+
+Exported Formats: .h5 (legacy) and .keras (recommended)
+
+🚀 FUTURE IMPROVEMENTS
+
+Add Grad-CAM heatmaps for visual explainability
+
+Expand to CT and MRI modalities
+
+Deploy on Streamlit Cloud or Hugging Face Spaces
+
+Improve generalization with larger datasets
+
+🙌 ACKNOWLEDGEMENTS
+
+Publicly available chest X-ray datasets (Kaggle, NIH, etc.)
+
+TensorFlow, Keras, and Streamlit open-source communities
+
+Research in AI-driven medical imaging
+
+## License: Licensed under the MIT License. See the LICENSE file for details.
+
+This is **all-in-one**, copy-paste ready, and professional.  
+
+If you want, I can also **add horizontal separators (`---`) and slightly bigger headings** for GitHub to make it **even more visually appealing**.  
+
+Do you want me to do that?
