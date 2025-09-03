@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 # Load model
-model = tf.keras.models.load_model("lung_tumour_model.h5")
+model = tf.keras.models.load_model("lung_tumour_model_v2.keras")
 
 # 🌟 Title and description
 st.markdown(
