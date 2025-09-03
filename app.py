@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.utils import load_img, img_to_array
 import numpy as np
+import matplotlib.pyplot as plt
 
 # 🎨 Streamlit page config
 st.set_page_config(
@@ -48,15 +49,34 @@ if uploaded_file is not None:
     # Prediction
     prediction = model.predict(img_array)
 
-    st.write("🔎 **Raw prediction values:**", prediction)
+    # 🛠️ Debug: show raw model output
+    st.subheader("🔎 Raw Model Output")
+    st.json(prediction.tolist())
 
-    if prediction.shape[-1] == 1:
+    if prediction.shape[-1] == 1:  # Binary classification (sigmoid)
+        st.write(f"Sigmoid value: {prediction[0][0]:.4f}")
         label = "🟥 Tumour Detected" if prediction[0][0] > 0.5 else "🟩 Normal"
         confidence = float(prediction[0][0]) if label == "🟥 Tumour Detected" else 1 - float(prediction[0][0])
-    else:
+
+        # Bar chart visualization
+        st.subheader("📊 Prediction Confidence")
+        fig, ax = plt.subplots()
+        ax.bar(["Normal", "Tumour"], [1-confidence, confidence], color=["green", "red"])
+        ax.set_ylim([0, 1])
+        st.pyplot(fig)
+
+    else:  # Multi-class classification (softmax)
+        st.write("Class probabilities:", prediction[0])
         classes = ["🟩 Normal", "🟥 Tumour Detected"]
         label = classes[np.argmax(prediction[0])]
         confidence = float(np.max(prediction[0]))
+
+        # Bar chart visualization
+        st.subheader("📊 Prediction Confidence")
+        fig, ax = plt.subplots()
+        ax.bar(classes, prediction[0], color=["green", "red"])
+        ax.set_ylim([0, 1])
+        st.pyplot(fig)
 
     # Display uploaded image + prediction
     st.image(uploaded_file, caption="Uploaded X-ray", use_column_width=True)
@@ -71,7 +91,7 @@ if uploaded_file is not None:
         unsafe_allow_html=True,
     )
 
-    # Add progress bar for fun 🎉
+    # Add progress bar 🎉
     st.progress(confidence)
 
 else:
