@@ -77,10 +77,3 @@ TensorFlow, Keras, and Streamlit open-source communities
 
 Research in AI-driven medical imaging
 
-## License: Licensed under the MIT License. See the LICENSE file for details.
-
-This is **all-in-one**, copy-paste ready, and professional.  
-
-If you want, I can also **add horizontal separators (`---`) and slightly bigger headings** for GitHub to make it **even more visually appealing**.  
-
-Do you want me to do that?
